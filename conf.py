@@ -15,6 +15,13 @@ release = '0.1'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = set()
+
+extensions.add('sphinx.ext.autosectionlabel')
+autosectionlabel_prefix_document = True     # Use prefixes for references to other files
+                                            # Note: the first ":" always divides filepath and titlename
+autosectionlabel_maxdepth = 0               # bound referable header level (e.g. to allow non-unique titles)
+                                            # 0 -> all Titles are referable and must be unique!
+
 extensions.add('sphinx.ext.intersphinx')
 intersphinx_mapping = {
     'sphinx':       ('https://www.sphinx-doc.org/en/master', None)
