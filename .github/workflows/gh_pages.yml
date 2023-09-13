@@ -1,0 +1,119 @@
+# Describes the Workflow
+
+name: Build Sphinx Documentation
+
+on:
+  # Runs on pushes targeting the default (main) branch.
+  push:
+    branches: ["main, develop"]
+    
+  # Runs on pull requests targeting the default branch.
+  # pull_request:
+  #   brachnes: ["main"]
+  
+  # Runs the workflow on scheduled times.
+  # schedule:
+  #   - cron: "* * * * *"
+  #            | | | | |
+  #            | | | | |-- day of the week (0-6 or SUN-SAT)
+  #            | | | |---- month (1-12 or Jan-Dec)
+  #            | | |------ day of month (1-31)
+  #            | |--------- hour (0-23)
+  #            |----------- minute (0-59)
+  # Example: "0 2 * * 1-5" => Monday to Friday at 02:00 UTC
+
+  # Allows you to run this workflow manually from the Actions tab.
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages.
+permissions:
+
+  # contents: read permits an action to list the commits, and contents:write allows the action to create a release.
+  contents: read
+  
+  # pages: write permits an action to request a GitHub Pages build.
+  pages: write
+  
+  # id-token: write is required to run a job or workflow.
+  id-token: write
+
+# Allow only one concurrent deployment at a time, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # Build Sphinx Documentation => Script is executed.
+  build_sphinx_html:
+  
+    # Defines the type of machine to run the job on.
+    # self-hosted: A self-hosted runner is a system that you deploy and manage 
+    # to execute jobs from GitHub Actions on GitHub.com.
+    runs-on: ubuntu-latest
+    
+    # Defines the environment that the job references.
+    # A new environment can be created under settings => environment.
+    environment:
+    
+      # This is the name of the environment.
+      name: github-pages
+      
+      #The URL maps to environment_url in the deployments API.
+      # Here the output is used as URL.
+      url: ${{ steps.deployment.outputs.page_url }}
+      
+    # Steps represent a sequence of tasks that will be executed as part of the job.
+    # Steps can run commands, run setup tasks, or run an action in your repository, 
+    # a public repository, or an action published in a Docker registry.
+    steps:
+    
+      # "uses" selects an action to run as part of a step in your job.
+      # checkout@v3 runs version 3 of the actions/checkout action.
+      # This is an action that checks out your repository onto the runner, 
+      # allowing you to run scripts or other actions against your code.
+      - uses: actions/checkout@v3
+      
+      # Installs a version of python.
+      - uses: actions/setup-python@v3
+      
+      # A name for your step to display on GitHub.
+      - name: Install dependencies
+      
+        # "|" opens a multiline command.
+        # Here it upgrades pip and installs all required packages.
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+      
+          
+      # A name for your step to display on GitHub.
+      - name: Run Sphinx
+        
+        # Runs Sphinx for the paths ./doc and ./res/html and creates a html output.
+        run: python -m sphinx -b html . ./res/html
+        
+      # A name for your step to display on GitHub.
+      - name: Setup Pages
+      
+        # A GitHub Action to enable Pages in version 3.
+        uses: actions/configure-pages@v3
+        
+      # A name for your step to display on GitHub.
+      - name: Upload artifact
+        
+        # Here a composite action for packaging and uploading artifact that can be deployed to GitHub Pages.
+        uses: actions/upload-pages-artifact@v1
+        with:
+          # Upload Documentation folder to Github Pages.
+          path: './res/html'
+          
+      # A name for your step to display on GitHub.
+      - name: Deploy to GitHub Pages
+      
+        # A unique identifier for the step. You can use the id to reference the step in contexts.
+        id: deployment
+        
+        # This action is used to deploy actions artifacts to GitHub Pages.
+        uses: actions/deploy-pages@v2
