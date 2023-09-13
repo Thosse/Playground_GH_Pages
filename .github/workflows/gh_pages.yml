@@ -51,7 +51,7 @@ jobs:
     # Defines the type of machine to run the job on.
     # self-hosted: A self-hosted runner is a system that you deploy and manage 
     # to execute jobs from GitHub Actions on GitHub.com.
-    runs-on: [ self-hosted ]
+    runs-on: [ ubuntu-latest ]
     
     # Defines the environment that the job references.
     # A new environment can be created under settings => environment.
