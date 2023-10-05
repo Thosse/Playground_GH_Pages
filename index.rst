@@ -24,7 +24,22 @@ Some Text again.
 
 A reference to :ref:`sphinx:ref-role`
 
+:ref:`index:This is a LVL 3 Header`
 
+:ref:`index:Header 1.3`
+
+:ref:`index:Überschrift`
+
+:ref:`index:Überschrift 1.5`
+
+Header 1.3
+----------
+
+Überschrift
+-----------
+
+Überschrift 1.5
+---------------
 
 Indices and tables
 ==================
