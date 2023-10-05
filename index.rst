@@ -17,8 +17,8 @@ This is just a Test.
 This is a LVL 2 Header
 ----------------------
 
-This is a LVL 3 Header
-**********************
+This is a LVL Three Header
+**************************
 
 Some Text again.
 
