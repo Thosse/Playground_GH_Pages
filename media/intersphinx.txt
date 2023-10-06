@@ -1,0 +1,13 @@
+std:doc
+    index                                    Intersphinx Minimal Example             : index.html
+std:label
+    genindex                                 Index                                   : genindex.html
+    index:1 works                            1 Works                                 : index.html#works
+    index:123 works                          123 Works                               : index.html#id1
+    index:headers without digits work        Headers without Digits work             : index.html#headers-without-digits-work
+    index:intersphinx minimal example        Intersphinx Minimal Example             : index.html#intersphinx-minimal-example
+    index:works 1                            Works 1                                 : index.html#works-1
+    index:works 1 works                      Works 1 Works                           : index.html#works-1-works
+    modindex                                 Module Index                            : py-modindex.html
+    py-modindex                              Python Module Index                     : py-modindex.html
+    search                                   Search Page                             : search.html

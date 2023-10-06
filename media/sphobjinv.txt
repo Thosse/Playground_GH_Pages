@@ -1,0 +1,22 @@
+# Sphinx inventory version 2
+# Project: Pages Playground
+# Version: 
+# The remainder of this file is compressed using zlib.
+genindex std:label -1 genindex.html Index
+index std:doc -1 index.html Intersphinx Minimal Example
+index:1 2 3 fails std:label -1 index.html#fails 1 2 3 Fails
+index:1 fails 1 std:label -1 index.html#fails-1 1 Fails 1
+index:1 works std:label -1 index.html#works 1 Works
+index:123 works std:label -1 index.html#id1 123 Works
+index:fails 1 2 3 std:label -1 index.html#fails-1-2-3 Fails 1 2 3
+index:fails 1 2 fails std:label -1 index.html#fails-1-2-fails Fails 1 2 Fails
+index:fails 1 fails 2 std:label -1 index.html#fails-1-fails-2 Fails 1 Fails 2
+index:fails fails 1 std:label -1 index.html#fails-fails-1 Fails Fails 1
+index:fails fails 2 fails fails std:label -1 index.html#fails-fails-2-fails-fails Fails Fails 2 Fails Fails
+index:headers without digits work std:label -1 index.html#headers-without-digits-work Headers without Digits work
+index:intersphinx minimal example std:label -1 index.html#intersphinx-minimal-example Intersphinx Minimal Example
+index:works 1 std:label -1 index.html#works-1 Works 1
+index:works 1 works std:label -1 index.html#works-1-works Works 1 Works
+modindex std:label -1 py-modindex.html Module Index
+py-modindex std:label -1 py-modindex.html Python Module Index
+search std:label -1 search.html Search Page

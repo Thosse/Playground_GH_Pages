@@ -1,49 +1,67 @@
-.. Pages Playground documentation master file, created by
-   sphinx-quickstart on Thu Jun  8 20:48:36 2023.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Intersphinx Minimal Example
+===========================
+
+Links to Headders added via autosectionlabels work inconsistently with intersphinx.
+The following header names contain either "Works" if the can be linked to via intersphinx
+or "Fails" if they cannot be linked to.
+
+Any direct referencing (not using inersphinx) works fine.
+All corresponding link objects exist, as seen in :download:`the converted objects.inv file <media/sphobjinv.txt>`.
+
+However, only some headers can be linked to via intersphinx.
+This seems to be an error related to the decryption of the objects.inv file,
+since calling
+
+    ``python -m sphinx.ext.intersphinx https://thosse.github.io/Playground_GH_Pages/``
+
+returns only :download:`a subset of the link targers <media/intersphinx.txt>`.
 
 
-Thosses Github Pages Playground
-===============================
+Headers without Digits work
+---------------------------
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+:ref:`index:Headers without Digits work`
 
+1 Works
+-------
+:ref:`index:1 Works`
 
-This is just a Test.
+Works 1
+-------
+:ref:`index:Works 1`
 
-This is a LVL 2 Header
-----------------------
+Works 1 Works
+-------------
+:ref:`index:Works 1 Works`
 
-This is a LVL Three Header
-**************************
+123 Works
+---------
+:ref:`index:123 Works`
 
-Some Text again.
-
-A reference to :ref:`sphinx:ref-role`
-
-:ref:`index:This is a LVL 3 Header`
-
-:ref:`index:Header 1.3`
-
-:ref:`index:Überschrift`
-
-:ref:`index:Überschrift 1.5`
-
-Header 1.3
-----------
-
-Überschrift
+1 2 3 Fails
 -----------
+:ref:`index:1 2 3 Fails`
 
-Überschrift 1.5
+Fails Fails 1
+-------------
+:ref:`index:Fails Fails 1`
+
+Fails Fails 2 Fails Fails
+-------------------------
+:ref:`index:Fails Fails 2 Fails Fails`
+
+Fails 1 2 Fails
 ---------------
+:ref:`index:Fails 1 2 Fails`
 
-Indices and tables
-==================
+Fails 1 Fails 2
+---------------
+:ref:`index:Fails 1 Fails 2`
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Fails 1 2 3
+------------
+:ref:`index:Fails 1 2 3`
+
+1 Fails 1
+---------
+:ref:`index:1 Fails 1`
